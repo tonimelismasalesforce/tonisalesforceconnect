@@ -11,7 +11,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 def root():
     DATABASE_URL = os.environ['DATABASE_URL']
     dbconn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    cursor = dbconn.cursor()
+    cursor = dbconn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute("""SELECT
       id, sfid, firstname, lastname, email, createddate
       FROM
