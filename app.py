@@ -5,6 +5,7 @@ from flask import Flask, jsonify
 import psycopg2
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.route('/')
 def root():
@@ -20,12 +21,3 @@ def root():
     records = cursor.fetchall()
 
     return jsonify(records)
-
-    #res = ""
-    #for row in records:
-    #    res = res + "[ "
-    #    for column in row:
-    #        res = res + str(column) + " | "
-    #    res = res + "]\n"
-
-    #return res
