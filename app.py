@@ -1,8 +1,7 @@
 #!python3
 
 import os
-import json
-from flask import Flask, render_template
+from flask import Flask, jsonify
 import psycopg2
 
 app = Flask(__name__)
@@ -20,9 +19,7 @@ def root():
       systemmodstamp DESC;""")
     records = cursor.fetchall()
 
-    res = make_response(json.dumps(records, default=str))
-    res.mimetype = 'application/json'
-    return res
+    return jsonify(records)
 
     #res = ""
     #for row in records:
