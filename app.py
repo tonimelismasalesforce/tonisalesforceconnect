@@ -1,6 +1,7 @@
 #!python3
 
 import os
+import json
 from flask import Flask, render_template
 import psycopg2
 
@@ -19,11 +20,13 @@ def root():
       systemmodstamp DESC;""")
     records = cursor.fetchall()
 
-    res = ""
-    for row in records:
-        res = res + "[ "
-        for column in row:
-            res = res + str(column) + " | "
-        res = res + "]\n"
+    return json.dumps(records)
 
-    return res
+    #res = ""
+    #for row in records:
+    #    res = res + "[ "
+    #    for column in row:
+    #        res = res + str(column) + " | "
+    #    res = res + "]\n"
+
+    #return res
