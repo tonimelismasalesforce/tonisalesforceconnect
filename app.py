@@ -20,7 +20,7 @@ def root():
       systemmodstamp DESC;""")
     records = cursor.fetchall()
 
-    return json.dumps(records)
+    return json.dumps(records, default=str)
 
     #res = ""
     #for row in records:
