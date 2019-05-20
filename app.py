@@ -20,7 +20,9 @@ def root():
       systemmodstamp DESC;""")
     records = cursor.fetchall()
 
-    return json.dumps(records, default=str)
+    res = make_response(json.dumps(records, default=str))
+    res.mimetype = 'application/json'
+    return res
 
     #res = ""
     #for row in records:
