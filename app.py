@@ -3,6 +3,7 @@
 import os
 from flask import Flask, jsonify
 import psycopg2
+import psycopg2.extras
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
